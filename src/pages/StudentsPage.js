@@ -94,8 +94,8 @@ const StudentsPage = () => {
           </div> */}
 
           <div className="flex mb-6 justify-end">
-            <input className="p-2 ml-2 border bg-blue-100/60 hover:bg-blue-200 focus:outline-none focus:border focus:border-blue-300 rounded-lg cursor-pointer" type="text" placeholder="Buscar..." />
-            <select className="ml-2 p-2 border bg-blue-100 hover:bg-blue-100/60 focus:border focus:border-blue-300 cursor-pointer rounded-lg" name="" id="">
+            <input className="p-2 ml-2 border bg-gray-100/30 focus:outline-none focus:border focus:border-gray-300 rounded-lg cursor-pointer" type="text" placeholder="Buscar..." />
+            <select className="ml-2 p-2 border bg-gray-100/30 hover:bg-gray-100/60 focus:border focus:border-gray-300 cursor-pointer rounded-lg" name="" id="">
               <option value="">Más recientes</option>
               <option value="">Alfabetico Ascendente</option>
               <option value="">Alfabetico Descendente</option>

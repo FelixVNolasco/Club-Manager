@@ -32,8 +32,8 @@ const StudentPage = () => {
       <div className="flex">
         <Sidebar />
         <div className="flex flex-col mt-2 mr-6 w-5/6 h-screen border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
-          <div className="flex flex-col p-6 w-full items-center text-gray-200">
-            <div className="flex flex-col p-24 bg-slate-500 rounded-md">
+          <div className="flex flex-col p-6 w-full items-center">
+            <div className="flex flex-col p-24 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
               <div className="flex text-xl">
                 <span className="w-24 font-semibold">Boleta: </span>
                 <span className="font-semibold ml-2">2019602194</span>
@@ -70,7 +70,7 @@ const StudentPage = () => {
                 ></div>
               </div>
 
-              <div className="flex justify-end p-2 text-black">
+              <div className="flex justify-end p-2">
                 <div className="p-4 w-24 text-center font-semibold items-center bg-yellow-400 hover:bg-yellow-500 hover:bg-green rounded-md cursor-pointer">
                   Modificar
                 </div>
