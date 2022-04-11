@@ -2,8 +2,8 @@ import React from "react";
 import { SidebarItem } from "./SidebarItem";
 
 const dashboardItems = [
-  { title: "Ver Alumnos", img: "https://www.svgrepo.com/show/52340/student.svg"},
-  { title: "Agregar Alumno", img: "https://www.svgrepo.com/show/246367/add-user-add.svg"},
+  { title: "Ver Alumnos", img: "https://www.svgrepo.com/show/52340/student.svg", path: "/"},
+  { title: "Agregar Alumno", img: "https://www.svgrepo.com/show/246367/add-user-add.svg", path: "/student/new"},
 ];
 
 const quickMenuItems = [
