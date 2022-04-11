@@ -9,7 +9,7 @@ const NewStudent = () => {
       <Navbar />
       <div className="flex flex-row">
         <Sidebar />
-        <div className="mt-2 mr-6 w-5/6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
+        <div className="mt-2 mr-6 w-5/6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10  animate__animated animate__fadeIn animate__faster">
           <div className="flex flex-col p-2 border-2 border-slate-400 shadow-slate-500 rounded-md">
             <h5 className="font-semibold text-2xl ml-6 mt-2">
               Agregar un nuevo estudiante
@@ -19,35 +19,35 @@ const NewStudent = () => {
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Boleta</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 rounded-md"
+                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   type="text"
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Nombre(s)</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 rounded-md"
+                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   type="text"
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Apellidos</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 rounded-md"
+                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   type="text"
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Correo</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500  focus:border-green-500 rounded-md"
+                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   type="text"
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Plantel</span>
                 <select
-                  className="w-full ml-4 p-2 border-2 border-green-500 rounded-md"
+                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name=""
                   id=""
                 >
@@ -60,7 +60,7 @@ const NewStudent = () => {
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Actualmente esta inscrito?</span>
                 <select
-                  className="w-full ml-4 p-2 border-2 border-green-500 rounded-md"
+                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name=""
                   id=""
                 >
