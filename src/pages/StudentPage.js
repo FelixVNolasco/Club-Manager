@@ -5,37 +5,62 @@ import { Footer } from "../Components/Footer";
 // import { useLocation } from "react-router-dom";
 // import axios from "axios";
 import { useForm } from "../hooks/useForm";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const StudentPage = () => {
-  // const location = useLocation();
-  // const studentId = location.pathname.split("/")[2];
-  // const [product, setProduct] = useState({});
+  const location = useLocation();
+  const studentId = location.pathname.split("/")[2];
+  const [student, setStudent] = useState({});
+  const estaincrito = student.signedUp;
+
   const [modifying, setModifying] = useState(false);
 
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const students = await axios.get(
+          `http://localhost:6418/students/${studentId}`
+        );
+        setStudent(students.data);
+      } catch (error) {
+        console.log("Error en obtener alumno");
+      }
+    };
+    getProduct();
+  }, [studentId]);
+  // console.log(student);
+
   const [formValues, handleInputChange] = useForm({
-    boleta: "",
-    nombre: "",
-    apellidos: "",
-    correo: "",
+    // boleta: "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
+  const { firstName, lastName, email } = formValues;
+  
+  const UpdateStudent = async () => {
+    try {
+      await axios.put(
+        `http://localhost:6418/students/${studentId}`,
+        formValues
+      );
+    } catch (error) {
+      console.log(error)
+    }
+  };  
+  console.log(formValues);
 
-  const { boleta, nombre, apellidos, correo } = formValues;
+  const DeleteStudent = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:6418/students/${studentId}`
+      );
+    } catch (error) {
+      console.log(error)
+    }
+  };  
 
-  // useEffect(() => {
-  //   const getProduct = async () => {
-  //     try {
-  //       const product = await axios.get(
-  //         // `https://us-east-1.aws.data.mongodb-api.com/app/olympus-oocpc/endpoint/api/products/find?id=${studentId}`
-  //       );
-  //       setProduct(product.data);
-  //     } catch (error) {
-  //       console.log("Error en obtener alumno");
-  //     }
-  //   };
-  //   getProduct();
-  // }, [studentId]);
-
-  const estaincrito = true;
   return (
     <>
       <Navbar />
@@ -51,7 +76,7 @@ const StudentPage = () => {
                     <h4 className="text-2xl font-bold mb-4 text-center">
                       Modificar Datos
                     </h4>
-                    <div className="mb-4 items-center flex text-xl ">
+                    {/* <div className="mb-4 items-center flex text-xl ">
                       <span className="w-24 font-semibold">Boleta: </span>
                       <input
                         className="ml-2 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
@@ -60,16 +85,17 @@ const StudentPage = () => {
                         value={boleta}
                         onChange={handleInputChange}
                       />
-                    </div>
+                    </div> */}
 
                     <div className="mb-4 items-center flex text-xl ">
                       <span className="w-24 font-semibold">Nombre: </span>
                       <input
                         className="ml-2 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
                         type="text"
-                        name="nombre"
-                        value={nombre}
+                        name="firstName"
+                        value={firstName}
                         onChange={handleInputChange}
+                        placeholder={student.firstName}
                       />
                     </div>
 
@@ -78,9 +104,10 @@ const StudentPage = () => {
                       <input
                         className="ml-2 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
                         type="text"
-                        name="apellidos"
-                        value={apellidos}
+                        name="lastName"
+                        value={lastName}
                         onChange={handleInputChange}
+                        placeholder={student.lastName}
                       />
                     </div>
 
@@ -89,9 +116,10 @@ const StudentPage = () => {
                       <input
                         className="ml-10 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
                         type="text"
-                        name="correo"
-                        value={correo}
+                        name="email"
+                        value={email}
                         onChange={handleInputChange}
+                        placeholder={student.email}
                       />
                     </div>
 
@@ -104,7 +132,7 @@ const StudentPage = () => {
                       </div>
                       <div
                         className="ml-6 p-4 text-center font-semibold items-center bg-green-400 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer"
-                        onClick={() => console.log("confirmar")}
+                        onClick={UpdateStudent}
                       >
                         Confirmar
                       </div>
@@ -117,43 +145,45 @@ const StudentPage = () => {
                     <h4 className="text-2xl font-bold mb-4 text-center">
                       Datos del alumno
                     </h4>
-                    <div className="flex text-xl">
+                    {/* <div className="flex text-xl">
                       <span className="w-24 font-semibold">Boleta: </span>
                       <span className="font-semibold ml-2 mb-4">
-                        2019602194
+                        {2019602194}
                       </span>
-                    </div>
+                    </div> */}
 
                     <div className="flex text-xl">
                       <span className="w-24 font-semibold">Nombre: </span>
                       <span className="font-semibold ml-2 mb-4">
-                        Felix Enrique
+                        {student.firstName}
                       </span>
                     </div>
 
                     <div className="flex text-xl">
                       <span className="w-24 font-semibold">Apellidos: </span>
                       <span className="font-semibold ml-2 mb-4">
-                        Vega Nolasco
+                        {student.lastName}
                       </span>
                     </div>
 
                     <div className="flex text-xl">
                       <span className="w-16 font-semibold">Carrera: </span>
                       <span className="font-semibold ml-10 mb-4">
-                        Ingeniería en Informática
+                        {student.career}
                       </span>
                     </div>
 
                     <div className="flex text-xl">
                       <span className="w-16 font-semibold">Plantel: </span>
-                      <span className="font-semibold ml-10 mb-4">UPIICSA</span>
+                      <span className="font-semibold ml-10 mb-4">
+                        {student.school}
+                      </span>
                     </div>
 
                     <div className="flex text-xl">
                       <span className="w-16 font-semibold">Correo: </span>
                       <span className="font-semibold ml-10 mb-4">
-                        felixvnolasco@gmail.com
+                        {student.email}
                       </span>
                     </div>
 
@@ -177,7 +207,7 @@ const StudentPage = () => {
                       >
                         Modificar
                       </div>
-                      <div className="ml-6 p-4 w-24 text-center font-semibold items-center bg-red-400 hover:bg-red-500 hover:bg-green rounded-md cursor-pointer">
+                      <div className="ml-6 p-4 w-24 text-center font-semibold items-center bg-red-400 hover:bg-red-500 hover:bg-green rounded-md cursor-pointer" onClick={DeleteStudent}>
                         Eliminar
                       </div>
                     </div>

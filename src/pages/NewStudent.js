@@ -3,21 +3,33 @@ import { Navbar } from "../Components/Navbar";
 import { Sidebar } from "../Components/Sidebar";
 import { Footer } from "../Components/Footer";
 import { useForm } from "../hooks/useForm";
+import axios from "axios";
 
 const NewStudent = () => {
-  const [formValues, handleInputChange] = useForm({
-    boleta: "2019602194",
-    nombre: "Felix Enrique",
-    apellido: "Vega Nolasco",
-    correo: "felixvnolasco@gmail.com",
-    carrera: "Ingeniería en Informática",
-    plantel: "",
-    inscrito: "",
-  });
 
+  const [formValues, handleInputChange] = useForm({
+    // boleta: "2019602194",
+    firstName: "",
+    lastName: "",
+    email: "",
+    career: "",
+    school: "",
+    signedUp: true,
+  });
+  const { firstName, lastName, email, career, school, signedUp } = formValues;
   console.log(formValues);
-  const { boleta, nombre, apellido, correo, carrera, plantel, inscrito } =
-    formValues;
+
+
+  const CreateStudent = async () => {
+    try {
+      await axios.post(
+        `http://localhost:6418/students`,
+        formValues
+      );
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
   return (
     <>
@@ -31,7 +43,7 @@ const NewStudent = () => {
             </h5>
 
             <div className="flex flex-col">
-              <div className="flex p-6 items-center">
+              {/* <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Boleta</span>
                 <input
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
@@ -40,55 +52,55 @@ const NewStudent = () => {
                   onChange={handleInputChange}
                   value={boleta}
                 />
-              </div>
+              </div> */}
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Nombre(s)</span>
                 <input
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
-                  name="nombre"
+                  name="firstName"
                   type="text"
                   onChange={handleInputChange}
-                  value={nombre}
+                  value={firstName}
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Apellidos</span>
                 <input
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
-                  name="apellido"
+                  name="lastName"
                   type="text"
                   onChange={handleInputChange}
-                  value={apellido}
+                  value={lastName}
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Correo</span>
                 <input
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
-                  name="correo"
+                  name="email"
                   type="text"
                   onChange={handleInputChange}
-                  value={correo}
+                  value={email}
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Carrera</span>
                 <input
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
-                  name="carrera"
+                  name="career"
                   type="text"
                   onChange={handleInputChange}
-                  value={carrera}
+                  value={career}
                 />
               </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Plantel</span>
                 <select
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
-                  name="plantel"
+                  name="school"
                   id=""
                   onChange={handleInputChange}
-                  value={plantel}
+                  value={school}
                 >
                   <option disabled>Seleccione una opción</option>
                   <option value="UPIICSA" defaultChecked>
@@ -105,19 +117,19 @@ const NewStudent = () => {
                 </span>
                 <select
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
-                  name="inscrito"
+                  name="signedUp"
                   id=""
                   onChange={handleInputChange}
-                  value={inscrito}
+                  value={signedUp}
                 >
                   <option disabled>Seleccione una opción</option>
                   <option value="true">Si</option>
-                  <option value="false">No</option>
+                  <option value="false" disabled>No</option>
                 </select>
               </div>
 
               <div className="flex justify-end">
-                <div className="p-4 w-24 text-center font-semibold items-center bg-green-400 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer">
+                <div className="p-4 w-24 text-center font-semibold items-center bg-green-400 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer" onClick={CreateStudent}>
                   Agregar
                 </div>
               </div>
