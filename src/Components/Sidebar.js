@@ -6,10 +6,10 @@ const dashboardItems = [
   { title: "Agregar Alumno", img: "https://www.svgrepo.com/show/246367/add-user-add.svg", path: "/student/new"},
 ];
 
-const quickMenuItems = [
-  { title: "Ver Clubes", img: "https://www.svgrepo.com/show/69104/books.svg" },
-  { title: "Agregar Club", img: "https://www.svgrepo.com/show/5389/add.svg" },
-];
+// const quickMenuItems = [
+//   { title: "Ver Clubes", img: "https://www.svgrepo.com/show/69104/books.svg" },
+//   { title: "Agregar Club", img: "https://www.svgrepo.com/show/5389/add.svg" },
+// ];
 
 export const Sidebar = () => {
   return (
@@ -22,14 +22,14 @@ export const Sidebar = () => {
             })}
           </ul>
         </div>
-        <div className="flex flex-col p-4">
+        {/* <div className="flex flex-col p-4">
           <h3 className="font-semibold text-xl">Clubes</h3>
           <ul>
             {quickMenuItems.map((item) => {
               return <SidebarItem key={item.title} item={item} />;
             })}
           </ul>
-        </div>
+        </div> */}
 
       </div>
   );

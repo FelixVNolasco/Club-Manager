@@ -1,33 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import validator from "validator";
+
+import { useForm } from "../hooks/useForm";
 import { Navbar } from "../Components/Navbar";
 import { Sidebar } from "../Components/Sidebar";
 import { Footer } from "../Components/Footer";
-import { useForm } from "../hooks/useForm";
-import axios from "axios";
 
 const NewStudent = () => {
+  const navigate = useNavigate();
 
   const [formValues, handleInputChange] = useForm({
-    // boleta: "2019602194",
+    boleta: "",
     firstName: "",
     lastName: "",
     email: "",
     career: "",
-    school: "",
+    school: "UPIICSA",
     signedUp: true,
   });
-  const { firstName, lastName, email, career, school, signedUp } = formValues;
+  const { boleta, firstName, lastName, email, career, school, signedUp } =
+    formValues;
   console.log(formValues);
 
+  const [errors, setErrors] = useState("");
+
+  const isFormValid = () => {
+    if (validator.isEmpty(boleta) || !validator.isNumeric(boleta)) {
+      setErrors(
+        "El campo boleta es obligatorio y solo debe de contener numeros"
+      );
+      return false;
+    } else if (validator.isEmpty(firstName)) {
+      setErrors("El campo Nombre es obligatorio");
+      return false;
+    } else if (validator.isEmpty(lastName)) {
+      setErrors("El campo Apellido es obligatorio");
+      return false;
+    } else if (validator.isEmpty(career)) {
+      setErrors("El campo Carrera es obligatorio");
+      return false;
+    } else if (!validator.isEmail(email)) {
+      setErrors("El campo Correo es obligatorio y no es un email");
+      return false;
+    }
+    setErrors("");
+    return true;
+  };
 
   const CreateStudent = async () => {
     try {
-      await axios.post(
-        `http://localhost:6418/students`,
-        formValues
-      );
+      if (isFormValid()) {
+        await axios.post(`http://localhost:6418/students`, formValues);
+        navigate("/");
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -41,9 +70,11 @@ const NewStudent = () => {
             <h5 className="font-semibold text-2xl ml-6 mt-2">
               Agregar un nuevo estudiante
             </h5>
-
+            {errors !== "" && (
+              <h5 className="p-2 m-2 text-center font-semibold bg-red-200 rounded-md animate__animated animate__headShake animate__faster">{errors}</h5>
+            )}
             <div className="flex flex-col">
-              {/* <div className="flex p-6 items-center">
+              <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Boleta</span>
                 <input
                   className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
@@ -52,7 +83,7 @@ const NewStudent = () => {
                   onChange={handleInputChange}
                   value={boleta}
                 />
-              </div> */}
+              </div>
               <div className="flex p-6 items-center">
                 <span className="w-24 font-semibold">Nombre(s)</span>
                 <input
@@ -124,12 +155,17 @@ const NewStudent = () => {
                 >
                   <option disabled>Seleccione una opción</option>
                   <option value="true">Si</option>
-                  <option value="false" disabled>No</option>
+                  <option value="false" disabled>
+                    No
+                  </option>
                 </select>
               </div>
 
               <div className="flex justify-end">
-                <div className="p-4 w-24 text-center font-semibold items-center bg-green-400 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer" onClick={CreateStudent}>
+                <div
+                  className="p-4 w-24 text-center font-semibold items-center bg-green-400 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer"
+                  onClick={CreateStudent}
+                >
                   Agregar
                 </div>
               </div>

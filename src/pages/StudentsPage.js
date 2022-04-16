@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Footer } from "../Components/Footer";
+import { MenuItem } from "../Components/MenuItem";
 import { Navbar } from "../Components/Navbar";
 import { Sidebar } from "../Components/Sidebar";
 import StudentCard from "../Components/StudentCard";
@@ -95,19 +96,12 @@ const StudentsPage = () => {
     getProduct();
   }, []);
 
-
   return (
     <>
       <Navbar />
       <main className="flex flex-row justify-center">
         <Sidebar />
         <div className="flex flex-col mt-2 mr-6 w-5/6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
-          {/* <div className="flex flex-row justify-between p-4">
-            {titles.map((item) => {
-              return <MenuItem key={item.title} item={item} />;
-            })}
-          </div> */}
-
           <div className="flex mb-6 justify-end">
             <input
               className="p-2 ml-2 border bg-gray-100/30 focus:outline-none focus:border focus:border-gray-300 rounded-lg cursor-pointer"
@@ -125,13 +119,10 @@ const StudentsPage = () => {
             </select>
           </div>
 
-          <div className="grid grid-cols-4 gap-y-8 justify-items-center animate__animated animate__fadeIn animate__faster">
-            {
-              students.map((student) => {
-                return (
-                  <StudentCard key={student.studentId} student={student} />
-                );
-              })}
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-8 justify-items-center animate__animated animate__fadeIn animate__faster">
+            {students.map((student) => {
+              return <StudentCard key={student.studentId} student={student} />;
+            })}
           </div>
         </div>
       </main>
