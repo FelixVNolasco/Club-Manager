@@ -88,14 +88,14 @@ const StudentPage = () => {
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <div className="flex flex-col mt-2 mr-6 w-5/6 h-screen border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
+        <div className="flex flex-col mt-6 m-auto sm:mt-6 sm:m-auto md:mt-6 md:m-auto lg:mt-6 lg:m-auto xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 w-5/6 h-full 2xl:h-screen border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
           <div className="flex flex-col p-6 w-full items-center">
             {errors !== "" && (
               <h5 className="w-full p-2 m-2 text-center font-semibold bg-red-200 rounded-md animate__animated animate__headShake animate__faster">
                 {errors}
               </h5>
             )}
-            <div className="flex flex-col p-24 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
+            <div className="flex flex-col p-10 sm:p-16 md:p-16 lg:p-16 xl:p-24 2xl:p-24 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
               {modifying ? (
                 <>
                   <div className="animate__animated animate__fadeIn animate__faster">

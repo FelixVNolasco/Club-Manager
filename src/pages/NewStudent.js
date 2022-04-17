@@ -22,7 +22,7 @@ const NewStudent = () => {
   });
   const { boleta, firstName, lastName, email, career, school, signedUp } =
     formValues;
-  console.log(formValues);
+  // console.log(formValues);
 
   const [errors, setErrors] = useState("");
 
@@ -63,11 +63,11 @@ const NewStudent = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-row">
+      <div className="flex flex-row ">
         <Sidebar />
-        <div className="mt-2 mr-6 w-5/6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10  animate__animated animate__fadeIn animate__faster">
+        <div className="mt-2 w-full sm:m-auto sm:mt-2 md:m-auto md:mt-2 lg:m-auto lg:mt-2 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10  animate__animated animate__fadeIn animate__faster">
           <div className="flex flex-col p-2 border-2 border-slate-400 shadow-slate-500 rounded-md">
-            <h5 className="font-semibold text-2xl ml-6 mt-2">
+            <h5 className="font-semibold text-center sm:text-left text-2xl ml-6 mt-2">
               Agregar un nuevo estudiante
             </h5>
             {errors !== "" && (

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Footer } from "../Components/Footer";
-import { MenuItem } from "../Components/MenuItem";
 import { Navbar } from "../Components/Navbar";
+import { NoContent } from "../Components/NoContent";
 import { Sidebar } from "../Components/Sidebar";
 import StudentCard from "../Components/StudentCard";
 
@@ -85,7 +85,7 @@ const StudentsPage = () => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    const getProduct = async () => {
+    const getStudents = async () => {
       try {
         const students = await axios.get(`http://localhost:6418/students`);
         setStudents(students.data);
@@ -93,7 +93,7 @@ const StudentsPage = () => {
         console.log("Error en obtener alumno");
       }
     };
-    getProduct();
+    getStudents();
   }, []);
 
   return (
@@ -101,30 +101,36 @@ const StudentsPage = () => {
       <Navbar />
       <main className="flex flex-row justify-center">
         <Sidebar />
-        <div className="flex flex-col mt-2 mr-6 w-5/6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
-          <div className="flex mb-6 justify-end">
-            <input
-              className="p-2 ml-2 border bg-gray-100/30 focus:outline-none focus:border focus:border-gray-300 rounded-lg cursor-pointer"
-              type="text"
-              placeholder="Buscar..."
-            />
-            <select
-              className="ml-2 p-2 border bg-gray-100/30 hover:bg-gray-100/60 focus:border focus:border-gray-300 cursor-pointer rounded-lg"
-              name=""
-              id=""
-            >
-              <option value="">Más recientes</option>
-              <option value="">Alfabetico Ascendente</option>
-              <option value="">Alfabetico Descendente</option>
-            </select>
-          </div>
+        {students.length !== 0 ? (
+          <div className="flex flex-col mt-6 sm:mt-6 md:mt-6 lg:mt-6 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 w-5/6 h-full 2xl:h-screen border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
+            <div className="flex flex-col sm:flex-row mb-6 justify-end">
+              <input
+                className="p-2 ml-2 border bg-gray-100/30 focus:outline-none focus:border focus:border-gray-300 rounded-lg cursor-pointer"
+                type="text"
+                placeholder="Buscar..."
+              />
+              <select
+                className="mt-2 sm:ml-2 sm:mt-0 p-2 border bg-gray-100/30 hover:bg-gray-100/60 focus:border focus:border-gray-300 cursor-pointer rounded-lg"
+                name=""
+                id=""
+              >
+                <option value="">Más recientes</option>
+                <option value="">Alfabetico Ascendente</option>
+                <option value="">Alfabetico Descendente</option>
+              </select>
+            </div>
 
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-8 justify-items-center animate__animated animate__fadeIn animate__faster">
-            {students.map((student) => {
-              return <StudentCard key={student.studentId} student={student} />;
-            })}
+            <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-y-8 justify-items-center animate__animated animate__fadeIn animate__faster">
+              {students.map((student) => {
+                return (
+                  <StudentCard key={student.studentId} student={student} />
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <NoContent />
+        )}
       </main>
       <Footer />
     </>
