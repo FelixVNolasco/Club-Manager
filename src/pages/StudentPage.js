@@ -95,7 +95,7 @@ const StudentPage = () => {
                 {errors}
               </h5>
             )}
-            <div className="flex flex-col p-10 sm:p-16 md:p-16 lg:p-16 xl:p-24 2xl:p-24 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
+            <div className="flex flex-col p-6 sm:p-16 md:p-16 lg:p-16 xl:p-24 2xl:p-24 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
               {modifying ? (
                 <>
                   <div className="animate__animated animate__fadeIn animate__faster">
