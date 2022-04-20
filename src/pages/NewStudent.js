@@ -4,9 +4,7 @@ import axios from "axios";
 import validator from "validator";
 import { FaAngleLeft } from "react-icons/fa";
 import { useForm } from "../hooks/useForm";
-import { Navbar } from "../Components/Navbar";
 import { Sidebar } from "../Components/Sidebar";
-import { Footer } from "../Components/Footer";
 
 const NewStudent = () => {
   const navigate = useNavigate();
@@ -62,10 +60,9 @@ const NewStudent = () => {
 
   return (
     <>
-      <Navbar />
       <div className="flex flex-row ">
         <Sidebar />
-        <div className="mt-2 w-full p-4 sm:m-auto sm:mt-2 sm:p-10 md:m-auto md:mt-2 lg:m-auto lg:mt-2 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 animate__animated animate__fadeIn animate__faster">
+        <div className="mt-2 w-full sm:w-5/6 p-4 sm:m-auto sm:mt-2 sm:p-10 md:m-auto md:mt-2 lg:m-auto lg:mt-2 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 animate__animated animate__fadeIn animate__faster">
           <div className="flex flex-col p-2 border-2 border-slate-400 shadow-slate-500 rounded-md">
             <Link
               className="xl:hidden w-1/3 flex p-2 bg-yellow-200 hover:bg-yellow-300 justify-center items-center font-semibold cursor-pointer rounded-md mb-2"
@@ -182,7 +179,6 @@ const NewStudent = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

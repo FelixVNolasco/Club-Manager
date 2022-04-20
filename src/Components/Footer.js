@@ -26,7 +26,7 @@ export const Footer = () => {
             >
             <img src="https://www.svgrepo.com/show/138936/linkedin.svg" width={24} height={24} alt="" />
             </a>
-          </div>
+                  </div>
         </div>
       </footer>
     </>
