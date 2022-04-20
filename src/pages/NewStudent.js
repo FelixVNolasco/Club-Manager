@@ -5,9 +5,12 @@ import validator from "validator";
 import { FaAngleLeft } from "react-icons/fa";
 import { useForm } from "../hooks/useForm";
 import { Sidebar } from "../Components/Sidebar";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const NewStudent = () => {
   const navigate = useNavigate();
+  const MySwal = withReactContent(Swal)
 
   const [formValues, handleInputChange] = useForm({
     boleta: "",
@@ -50,11 +53,25 @@ const NewStudent = () => {
   const CreateStudent = async () => {
     try {
       if (isFormValid()) {
-        await axios.post(`http://localhost:6418/students`, formValues);
-        navigate("/");
+        await axios.post(`http://localhost:6418/students`, formValues);        
+        MySwal.fire({
+          icon: 'success',
+          title: 'Estudiante Creado',
+          text: 'El estudiante se ha creado correctamente',
+          didOpen: () => {
+            navigate("/");
+          }
+        })
       }
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No ha sido posible crear el estudiante',
+        didOpen: () => {
+          navigate("/student/new");
+        }        
+      })
     }
   };
 

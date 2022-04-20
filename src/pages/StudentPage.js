@@ -5,9 +5,12 @@ import validator from "validator";
 import { FaAngleLeft } from "react-icons/fa";
 import { Sidebar } from "../Components/Sidebar";
 import { useForm } from "../hooks/useForm";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const StudentPage = () => {
   const location = useLocation();
+  const MySwal = withReactContent(Swal)
   const studentId = location.pathname.split("/")[2];
   const navigate = useNavigate();
   const [student, setStudent] = useState({});
@@ -22,6 +25,14 @@ const StudentPage = () => {
         );
         setStudent(students.data);
       } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No ha sido posible ver la informacion del estudiante',
+          didOpen: () => {
+            navigate("/");
+          }
+        });
         console.log(error);
       }
     };
@@ -65,19 +76,47 @@ const StudentPage = () => {
           `http://localhost:6418/students/${studentId}`,
           formValues
         );
-        navigate("/");
+        MySwal.fire({
+          icon: 'success',
+          title: 'Actualizado Correctamente',
+          text: 'Se ha actualizado la información del estudiante',
+          didOpen: () => {
+            navigate("/");
+          }
+        })
       }
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No ha sido actualizar el estudiante',
+        didOpen: () => {
+          navigate("/");
+        }
+      })
     }
   };
 
   const DeleteStudent = async () => {
     try {
       await axios.delete(`http://localhost:6418/students/${studentId}`);
-      navigate("/");
+      MySwal.fire({
+        icon: "success",
+        title: "Eliminado Correctamente",
+        text: "El estudiante se ha eliminado correctamente",
+        didOpen: () => {
+          navigate("/");
+        },
+      });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No ha sido posible eliminar al estudiante",
+        didOpen: () => {
+          navigate("/");
+        },
+      });
     }
   };
 
