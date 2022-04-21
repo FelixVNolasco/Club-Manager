@@ -67,7 +67,7 @@ const NewStudent = () => {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'No ha sido posible crear el estudiante',
+        text: 'No ha sido posible crear el estudiante debido a que ya existe un estudiante con esta boleta',
         didOpen: () => {
           navigate("/student/new");
         }        

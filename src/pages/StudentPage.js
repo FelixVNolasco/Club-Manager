@@ -37,7 +37,7 @@ const StudentPage = () => {
       }
     };
     getStudent();
-  }, [studentId]);
+  }, [studentId, navigate]);
 
   const [formValues, handleInputChange] = useForm({
     boleta: "",

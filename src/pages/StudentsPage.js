@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import { NoContent } from "../Components/NoContent";
 import { Sidebar } from "../Components/Sidebar";
 import StudentCard from "../Components/StudentCard";
@@ -20,20 +20,19 @@ const StudentsPage = () => {
     };
     getStudents();
   }, []);
-
-  useEffect(() => {
-    const sortArray = type => {
+  
+    const sortArray = (type) => {
       const types = {
-        boleta: 'boleta',
-        studentId: 'studentId'        
+        boleta: "boleta",
+        studentId: "studentId",
       };
       const sortProperty = types[type];
-      const sorted = [...students].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      const sorted = [...students].sort(
+        (a, b) => b[sortProperty] - a[sortProperty]
+      );
       setStudents(sorted);
     };
-    sortArray(sortType);
-  }, [sortType]);
-
+    
   console.log(students);
 
   return (
@@ -60,6 +59,7 @@ const StudentsPage = () => {
                 <option value="boleta">Por Boleta</option>
                 <option value="studentId">Mas recientes</option>
               </select>
+              <div className="mt-2 p-2 sm:ml-2 sm:mt-0 bg-gray-300 font-semibold rounded-md" onClick={() => sortArray(sortType)}>Aplicar Filtro</div>
             </div>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-y-8 justify-items-center animate__animated animate__fadeIn animate__faster">
