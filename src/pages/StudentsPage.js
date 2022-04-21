@@ -40,7 +40,7 @@ const StudentsPage = () => {
       <main className="flex flex-row justify-center">
         <Sidebar />
         {students.length !== 0 ? (
-          <div className="flex flex-col mt-6 sm:mt-6 md:mt-6 lg:mt-6 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 w-5/6 h-full sm:h-full border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
+          <div className="flex flex-col mt-6 sm:mt-6 md:mt-6 lg:mt-6 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 w-5/6 h-full sm:h-full md:h-full lg:h-screen xl:h-screen 2xl:h-screem border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 p-10">
             <div className="flex flex-col sm:flex-row mb-6 justify-end">
               <Link
                 to={"student/new"}
