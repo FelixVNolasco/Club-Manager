@@ -53,7 +53,7 @@ const NewStudent = () => {
   const CreateStudent = async () => {
     try {
       if (isFormValid()) {
-        await axios.post(`http://localhost:6418/students`, formValues);        
+        await axios.post(`http://localhost:5000/students`, formValues);        
         MySwal.fire({
           icon: 'success',
           title: 'Estudiante Creado',

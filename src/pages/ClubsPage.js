@@ -1,24 +1,24 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { NoContent } from "../Components/NoContent";
 import { Sidebar } from "../Components/Sidebar";
 import StudentCard from "../Components/StudentCard";
 
-const StudentsPage = () => {
+export const ClubsPage = () => {
   const [students, setStudents] = useState([]);
   const [sortType, setSortType] = useState("");
 
   useEffect(() => {
-    const getStudents = async () => {
+    const getClubs = async () => {
       try {
-        const students = await axios.get(`http://localhost:5000/students`);
-        setStudents(students.data);
+        const clubs = await axios.get(`http://localhost:5000/clubs`);
+        setStudents(clubs.data);
       } catch (error) {
         console.log("Error en obtener alumno");
       }
     };
-    getStudents();
+    getClubs();
   }, []);
 
   const sortArray = (type) => {
@@ -43,7 +43,7 @@ const StudentsPage = () => {
               to={"student/new"}
               className="xl:hidden mb-2 sm:mb-0 p-2 rounded-md bg-green-300 transition ease-in-out duration-300 hover:bg-green-400 cursor-pointer"
             >
-              <span className="p-2">Agregar un estudiante</span>
+              <span className="p-2">Agregar Club</span>
             </Link>
             <select
               className="mt-2 sm:ml-2 sm:mt-0 p-2 border bg-gray-100/30 hover:bg-gray-100/60 focus:border focus:border-gray-300 cursor-pointer rounded-lg"
@@ -53,7 +53,7 @@ const StudentsPage = () => {
                 setSortType(e.target.value);
               }}
             >
-              <option value="boleta">Por Boleta</option>
+              <option value="boleta">Por Id</option>
               <option value="studentId">Mas recientes</option>
             </select>
             <div
@@ -76,5 +76,3 @@ const StudentsPage = () => {
     </main>
   );
 };
-
-export default StudentsPage;

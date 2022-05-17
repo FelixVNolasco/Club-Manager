@@ -21,7 +21,7 @@ const StudentPage = () => {
     const getStudent = async () => {
       try {
         const students = await axios.get(
-          `http://localhost:6418/students/${studentId}`
+          `http://localhost:5000/students/${studentId}`
         );
         setStudent(students.data);
       } catch (error) {
@@ -73,7 +73,7 @@ const StudentPage = () => {
     try {
       if (isFormValid()) {
         await axios.put(
-          `http://localhost:6418/students/${studentId}`,
+          `http://localhost:5000/students/${studentId}`,
           formValues
         );
         MySwal.fire({
@@ -99,7 +99,7 @@ const StudentPage = () => {
 
   const DeleteStudent = async () => {
     try {
-      await axios.delete(`http://localhost:6418/students/${studentId}`);
+      await axios.delete(`http://localhost:5000/students/${studentId}`);
       MySwal.fire({
         icon: "success",
         title: "Eliminado Correctamente",
