@@ -82,13 +82,13 @@ const NewStudent = () => {
         <div className="mt-2 w-full sm:w-5/6 p-4 sm:m-auto sm:mt-2 sm:p-10 md:m-auto md:mt-2 lg:m-auto lg:mt-2 xl:mt-2 xl:mr-6 2xl:mt-2 2xl:mr-6 h-6/6 border-slate-400 border-2 rounded-lg drop-shadow-lg shadow-sm shadow-slate-500 animate__animated animate__fadeIn animate__faster">
           <div className="flex flex-col p-2 border-2 border-slate-400 shadow-slate-500 rounded-md">
             <Link
-              className="xl:hidden w-1/3 flex p-2 bg-yellow-200 hover:bg-yellow-300 justify-center items-center font-semibold cursor-pointer rounded-md mb-2"
+              className="xl:hidden w-1/3 flex p-2 bg-yellow-200 hover:bg-yellow-300 justify-center items-center font-semibold cursor-pointer rounded-md mb-4"
               to="/"
             >
               <FaAngleLeft />
               <span>Regresar</span>
             </Link>
-            <h5 className="font-semibold text-center sm:text-left text-2xl ml-6 mt-2">
+            <h5 className="font-semibold text-center sm:text-left text-2xl ml-6 mt-2 mb-6">
               Agregar un nuevo estudiante
             </h5>
             {errors !== "" && (
@@ -97,60 +97,60 @@ const NewStudent = () => {
               </h5>
             )}
             <div className="flex flex-col">
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">Boleta</span>
+              <div className="flex flex-col md:flex md:flex-row p-6 items-start md:items-center">
+                <span className="w-full md:w-3/12 lg:w-2/12 mb-2 md:mb-0 font-semibold">Boleta</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full md:w-9/12 lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="boleta"
                   type="text"
                   onChange={handleInputChange}
                   value={boleta}
                 />
               </div>
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">Nombre(s)</span>
+              <div className="flex flex-col md:flex md:flex-row p-6 items-start md:items-center">
+                <span className="w-full md:w-3/12 lg:w-2/12 mb-2 md:mb-0 font-semibold">Nombre(s)</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full md:w-9/12 lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="firstName"
                   type="text"
                   onChange={handleInputChange}
                   value={firstName}
                 />
               </div>
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">Apellidos</span>
+              <div className="flex flex-col md:flex md:flex-row p-6 items-start md:items-center">
+                <span className="w-full md:w-3/12 lg:w-2/12 mb-2 md:mb-0 font-semibold">Apellidos</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full md:w-9/12 lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="lastName"
                   type="text"
                   onChange={handleInputChange}
                   value={lastName}
                 />
               </div>
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">Correo</span>
+              <div className="flex flex-col md:flex md:flex-row p-6 items-start md:items-center">
+                <span className="w-full md:w-3/12 lg:w-2/12 mb-2 md:mb-0 font-semibold">Correo</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full md:w-9/12 lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="email"
                   type="text"
                   onChange={handleInputChange}
                   value={email}
                 />
               </div>
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">Carrera</span>
+              <div className="flex flex-col md:flex md:flex-row p-6 items-start md:items-center">
+                <span className="w-full md:w-3/12 lg:w-2/12 mb-2 md:mb-0 font-semibold">Carrera</span>
                 <input
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full md:w-9/12 lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="career"
                   type="text"
                   onChange={handleInputChange}
                   value={career}
                 />
               </div>
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">Plantel</span>
+              <div className="flex flex-col md:flex md:flex-row p-6 items-start md:items-center">
+                <span className="w-full md:w-3/12 lg:w-2/12 mb-2 md:mb-0 font-semibold">Plantel</span>
                 <select
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full md:w-9/12 lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="school"
                   id=""
                   onChange={handleInputChange}
@@ -165,21 +165,21 @@ const NewStudent = () => {
                   <option value="ESCOM">ESCOM</option>
                 </select>
               </div>
-              <div className="flex p-6 items-center">
-                <span className="w-24 font-semibold">
-                  Actualmente esta inscrito?
+              <div className="flex flex-col lg:flex lg:flex-row p-6 items-start lg:items-center">
+                <span className="w-full lg:w-2/12 mb-2 lg:mb-0 font-semibold">
+                  Situación Escolar
                 </span>
                 <select
-                  className="w-full ml-4 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
+                  className="w-full lg:w-10/12 p-2 border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 rounded-md"
                   name="signedUp"
                   id=""
                   onChange={handleInputChange}
                   value={signedUp}
                 >
                   <option disabled>Seleccione una opción</option>
-                  <option value="true">Si</option>
+                  <option value="true">Regular</option>
                   <option value="false" disabled>
-                    No
+                    Irregular
                   </option>
                 </select>
               </div>

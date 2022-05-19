@@ -5,6 +5,7 @@ import { Footer } from "./Components/Footer";
 import { Navbar } from "./Components/Navbar";
 import { ClubPage } from "./pages/ClubPage";
 import { ClubsPage } from "./pages/ClubsPage";
+import NewStudent from "./pages/NewStudent";
 import StudentPage from "./pages/StudentPage";
 import StudentsPage from "./pages/StudentsPage";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<StudentsPage />} />
+        <Route path="/student/new" element={<NewStudent />} />
         <Route path="/student/:id" element={<StudentPage />} />
         <Route path="/clubs" element={<ClubsPage />} />
         <Route path="/clubs/:id" element={<ClubPage />} />

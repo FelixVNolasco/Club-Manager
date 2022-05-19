@@ -138,18 +138,18 @@ const StudentPage = () => {
                 {errors}
               </h5>
             )}
-            <div className="flex flex-col p-6 sm:p-16 md:p-16 lg:p-16 xl:p-24 2xl:p-24 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
+            <div className="flex flex-col p-6 sm:p-16 md:p-16 lg:p-16 xl:p-24 2xl:p-24 lg:w-2/3 bg-gradient-to-r from-gray-100 via-gray-100/50 to-gray-200 border-2 border-slate-200 rounded-md">
               {modifying ? (
                 <>
                   <div className="mb-12 animate__animated animate__fadeIn animate__faster">
-                    <h5 className="text-2xl font-bold mb-4 text-center">
+                    <h5 className="text-2xl font-bold mb-10 text-center">
                       Modificar Datos
                     </h5>
 
                     <div className="mb-4 items-center flex text-xl ">
-                      <span className="w-24 font-semibold">Boleta: </span>
+                      <span className="w-1/4 font-semibold">Boleta: </span>
                       <input
-                        className="ml-2 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
+                        className="p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 w-3/4"
                         type="text"
                         name="boleta"
                         value={boleta}
@@ -159,9 +159,9 @@ const StudentPage = () => {
                     </div>
 
                     <div className="mb-4 items-center flex text-xl ">
-                      <span className="w-24 font-semibold">Nombre: </span>
+                      <span className="w-1/4 font-semibold">Nombre: </span>
                       <input
-                        className="ml-2 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
+                        className="p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 w-3/4"
                         type="text"
                         name="firstName"
                         value={firstName}
@@ -171,9 +171,9 @@ const StudentPage = () => {
                     </div>
 
                     <div className="mb-4 items-center flex text-xl ">
-                      <span className="w-24 font-semibold">Apellidos: </span>
+                      <span className="w-1/4 font-semibold">Apellidos: </span>
                       <input
-                        className="ml-2 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
+                        className="p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 w-3/4"
                         type="text"
                         name="lastName"
                         value={lastName}
@@ -183,9 +183,9 @@ const StudentPage = () => {
                     </div>
 
                     <div className="mb-4 items-center flex text-xl ">
-                      <span className="w-16 font-semibold">Correo: </span>
+                      <span className="w-1/4 font-semibold">Correo: </span>
                       <input
-                        className="ml-10 p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700"
+                        className="p-2 rounded-md border-2 border-green-500 focus:outline-none focus:border-2 focus:border-green-700 w-3/4"
                         type="text"
                         name="email"
                         value={email}
@@ -196,13 +196,13 @@ const StudentPage = () => {
 
                     <div className="flex justify-end p-2">
                       <div
-                        className="p-4 text-center font-semibold items-center bg-red-400 hover:bg-red-500 hover:bg-green rounded-md cursor-pointer"
+                        className="p-4 text-center font-semibold items-center bg-red-400 transition ease-in-out duration-300 hover:bg-red-500 hover:bg-green rounded-md cursor-pointer"
                         onClick={() => setModifying(!modifying)}
                       >
                         Cancelar
                       </div>
                       <div
-                        className="ml-6 p-4 text-center font-semibold items-center bg-green-400 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer"
+                        className="ml-6 p-4 text-center font-semibold items-center bg-green-400 transition ease-in-out duration-300 hover:bg-green-500 hover:bg-green rounded-md cursor-pointer"
                         onClick={UpdateStudent}
                       >
                         Confirmar
@@ -213,7 +213,7 @@ const StudentPage = () => {
               ) : (
                 <>
                   <div className="animate__animated animate__fadeInDown animate__faster">
-                    <h4 className="text-2xl font-bold mb-4 text-center">
+                    <h4 className="text-2xl font-bold mb-6 text-center">
                       Datos del alumno
                     </h4>
                     <div className="flex text-xl">
@@ -273,13 +273,13 @@ const StudentPage = () => {
 
                     <div className="flex justify-end p-2">
                       <div
-                        className="p-4 w-24 text-center font-semibold items-center bg-yellow-400 hover:bg-yellow-500 hover:bg-green rounded-md cursor-pointer"
+                        className="p-4 w-24 text-center font-semibold items-center bg-yellow-400 transition ease-in-out duration-300 hover:bg-yellow-500 hover:bg-green rounded-md cursor-pointer"
                         onClick={() => setModifying(!modifying)}
                       >
                         Modificar
                       </div>
                       <div
-                        className="ml-6 p-4 w-24 text-center font-semibold items-center bg-red-400 hover:bg-red-500 hover:bg-green rounded-md cursor-pointer"
+                        className="ml-6 p-4 w-24 text-center font-semibold items-center bg-red-400 transition ease-in-out duration-300 hover:bg-red-500 hover:bg-green rounded-md cursor-pointer"
                         onClick={DeleteStudent}
                       >
                         Eliminar
